@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX</title>
+</head>
+<body>
+    <button id="loadButton">Load Data</button>
+    <div id="result"></div>
+
+    <script>
+        function doFirst(){
+            // 跟 HTML 畫面產生關聯
+            loadButton = document.getElementById('loadButton')
+            result = document.getElementById('result')
+
+            // 再建事件聆聽功能
+            loadButton.addEventListener('click',function(){
+                // step 1 建立 XMLHttpRequest 物件
+                xhr = new XMLHttpRequest()
+                xhr.addEventListener('readystatechange',callState) 
+
+                // step 2 發出請求並傳送出去  // false: 同步 | true: 非同步
+                // xhr.open('method', '可以幫忙處理資料的後端程式', 同步或非同步)
+
+                // GET
+                // let urlSource = `./jsp/getParameter.jsp?name=Peter&age=40`
+                // xhr.open('GET', urlSource, true)
+                // xhr.send()
+
+                // POST
+                let urlSource = `./jsp/getParameter.jsp`
+                xhr.open('POST', urlSource, true)
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+                xhr.send(`name=Peter&age=40`)
+
+            })
+        }
+        function callState(){
+            if(xhr.readyState == 4){  // readyState: 0 --> 1 --> 2 --> 3 --> 4
+                if(xhr.status == 200){
+                    // step 3 接收 Server 端傳回來的資料 -- 文字檔
+                    result.innerHTML = `
+                        <h1>${xhr.responseText}</h1>
+                    `
+                }else{
+                    result.innerHTML = `${xhr.status}: ${xhr.statusText}`
+                }
+            }
+        }
+        window.addEventListener('load',doFirst)
+    </script>
+</body>
+</html>

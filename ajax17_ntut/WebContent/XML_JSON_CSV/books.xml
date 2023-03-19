@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>  <!-- 1.第一行必須是XML宣告-->
+<bookstore>     <!--2. root element根節點: 只能有一個-->
+                <!--3. 標籤成對出現-->
+    <book>      <!--6. 標籤分大小寫-->
+        <name>Professional JavaScript for Web Developers, 4th Edition</name>
+        <author>Matt Frisbie</author>
+        <publisher date="2019-10-15">   <!--7. 屬性值一定要加引號-->
+            <name>Wrox Press</name>
+        </publisher>
+        <price>1496</price>
+        <command></command>    <!--4. 空標籤-->
+    </book>            <!--5. 標籤不交錯(巢狀結構)-->
+    <book>      
+        <name>JavaScript for Data Science</name>
+        <author>Maya Gans</author>
+        <author>Toby Hodges</author>
+        <author>Greg Wilson</author>
+        <publisher date="2020-01-28">  <!--9. 屬性不能重複-->
+            <name>CRC</name>
+        </publisher>
+        <price>1946</price>
+        <command/>     <!--8. <comm and/>標籤名稱不能有空白--> 
+    </book>
+    <book>      
+        <name>Clean Code in JavaScript</name>
+        <author>James Padolsey</author>
+        <publisher date="2020-01-17">  
+            <name>Packt Publishing</name>
+        </publisher>
+        <price>1204 &lt; 1500</price>  <!--10. 使用特殊字元-->
+        <command/>     
+    </book>
+</bookstore>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX -- use XML file</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#getButton').click(function(){
+                // $.get('url', 字串或物件或JSON, function(res){})
+                $.get('./jsp/getParameter.jsp',{name: 'Peter',age:40}, function(res){
+                    $('#result').html(res) //傳回來是標籤，看getParameter.jsp。.html=innerHTML以文字檔的方式SHOW出來
+                    
+                })
+            })
+
+            $('#postButton').click(function(){
+                $.post('./jsp/getParameter.jsp',{name: 'Peter',age:40}, function(res){
+                    $('#result').html(res)
+                })
+            })
+            $('#getJSONButton').click(function(){})
+            $('#ajaxButton').click(function(){})
+        })
+    </script>
+</head>
+<body>
+    <p>
+        <button id="getButton">Get</button>
+        <button id="postButton">Post</button>
+        <button id="getJSONButton">Get JSON</button>
+        <button id="ajaxButton">AJAX</button>
+        
+    </p>    
+    <div id="result"></div>
+</body>
+</html>

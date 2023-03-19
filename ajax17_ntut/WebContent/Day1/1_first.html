@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX</title>
+</head>
+<body>
+    <button id="loadButton">Load Data</button>
+    <div id="result"></div>
+
+    <script>
+        function doFirst(){
+            // 跟 HTML 畫面產生關聯
+            loadButton = document.getElementById('loadButton')
+            result = document.getElementById('result')
+
+            // 再建事件聆聽功能
+            loadButton.addEventListener('click',function(){
+                // result.innerHTML = `<h1>Hello</h1>`
+
+                // step 1 建立 XMLHttpRequest 物件
+                let xhr = new XMLHttpRequest()
+
+                // step 2 發出請求並傳送出去 ，2種傳送資料方法 GET POST// false: 同步 | true: 非同步
+                xhr.open('GET','./jsp/data.jsp',false)
+                xhr.send()
+
+                // step 3 接收 Server 端傳回來的資料以 文字檔 呈現，
+                result.innerHTML = `<h1>${xhr.responseText}</h1>`
+            })
+        }
+        window.addEventListener('load',doFirst)
+    </script>
+</body>
+</html>
